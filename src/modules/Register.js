@@ -69,26 +69,21 @@ class Register extends Component {
 checkFields(){
  let res = false;
 
+const { state, name, surname, country, password, email, tipo, cnumber, cexpiry, ccvc } = this.state
 
- if((this.state.name.length > 0) &&
-  (this.state.surname.length > 0) &&
-  (this.state.email.length > 0 ) &&
-  (this.state.country.length > 0) &&
-  (this.state.password.length > 0)){
+ if((name.length > 0) && (surname.length > 0) && (email.length > 0 ) && (country.length > 0) && (password.length > 0)){
     res = true;
   };
 
-  if(this.state.tipo === "pro"){
-    if((this.state.cnumber.length > 0) &&
-  (this.state.cexpiry.length > 0) &&
-  (this.state.ccvc.length > 0)){
+  if(tipo === "pro"){ // Controla los campos para las membresias premium
+    if((cnumber.length > 0) && (cexpiry.length > 0) && (ccvc.length > 0)){
     // aca nada
   }else{
     res = false;
   }
   }
-
-  if(!EmailValidator.validate(this.state.email)){
+	
+  if(!EmailValidator.validate(email)){
     res= false;
   }
   return res;
